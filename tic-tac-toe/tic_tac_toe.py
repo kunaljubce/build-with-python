@@ -1,5 +1,5 @@
 #from IPython.display import clear_output                                                   # Useful if code is run in Jupyter notebook
-import os
+import time
 from operator import itemgetter
 from modules.func import player_choices, game_decider, game_design, move_valid
 
@@ -15,7 +15,7 @@ if __name__ == '__main__':
     # Start accepting moves
     game_decided = False
     move = 1
-
+    time.sleep(5)
     game_design(game_pattern)
     while not(game_decided):
         
