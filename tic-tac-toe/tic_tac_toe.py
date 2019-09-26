@@ -11,18 +11,25 @@ if __name__ == '__main__':
 
     # Initialize game using number pad
     game_pattern = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
+    replay = True
+    
     # Start accepting moves
     game_decided = False
     move = 1
     time.sleep(5)
     game_design(game_pattern)
-    while not(game_decided):
+    
+    while replay and not(game_decided):
         
         # Check if game is drawn or not before proceeding!
         if game_pattern.count('X') + game_pattern.count('O') == 9:
-            print('Game drawn! No one wins! Want a replay?')
-            break
+            response = input('Game drawn! No one wins! Want a replay? (y/n): ')
+            if response.lower() == 'n':
+                print("Thanks for playing! Hope you enjoyed Tic-Tac-Toe!")
+                replay = False
+            else:
+                game_pattern = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                game_design(game_pattern)
 
         # If not drawn, proceed! Odd moves are for Player1 and even moves are for Player2.
         if move%2 != 0:
@@ -35,8 +42,14 @@ if __name__ == '__main__':
             game_decided = game_decider(game_pattern)
             game_design(game_pattern)
             if game_decided:
-                print("Congratulations {p1} for winning the game!".format(p1 = player1_name))
-                break
+                response = input("Congratulations {p1} for winning the game! Want a replay? (y/n): ".format(p1 = player1_name))
+                if response.lower() == 'n':
+                    print("Thanks for playing! Hope you enjoyed Tic-Tac-Toe!")
+                    replay = False
+                else:
+                    game_pattern = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                    game_design(game_pattern)
+                    game_decided = False
             move += 1
         else:
             move_id = int(input("{p2}, enter the box number to place your {c2}: ".format(p2 = player2_name, c2 = choices['player2'])))
@@ -47,8 +60,12 @@ if __name__ == '__main__':
             game_decided = game_decider(game_pattern)
             game_design(game_pattern)
             if game_decided:
-                print("Congratulations {p2} for winning the game!".format(p2 = player2_name))
-                break
+                response = input("Congratulations {p2} for winning the game! Want a replay? (y/n): ".format(p2 = player2_name))
+                if response.lower() == 'n':
+                    print("Thanks for playing! Hope you enjoyed Tic-Tac-Toe!")
+                    replay = False
+                else:
+                    game_pattern = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                    game_design(game_pattern)
+                    game_decided = False
             move += 1
-            
-        #game_decided = True
