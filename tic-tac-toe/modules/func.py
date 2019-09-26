@@ -6,7 +6,7 @@ def player_choices(player1_name, player2_name):
     
     choices = {'player1':'', 'player2':''}
     while not(choices['player1'] in ['X', 'O']):
-        choices['player1'] = (input("Hi {p1}, enter your choice (X/O):".format(p1 = player1_name))).upper()
+        choices['player1'] = (input("Hi {p1}, enter your choice (X/O): ".format(p1 = player1_name))).upper()
     choices['player2'] = 'O' if choices['player1'] == 'X' else 'X'
     print("Great, let's begin playing! {pn1} will play with {c1}, {pn2} will play with {c2}!" \
                               .format(pn1 = player1_name, pn2 = player2_name, c1 = choices['player1'], c2 = choices['player2']))
