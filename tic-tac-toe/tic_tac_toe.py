@@ -1,4 +1,5 @@
-from IPython.display import clear_output #, display
+#from IPython.display import clear_output                                                   # Useful if code is run in Jupyter notebook
+import os
 from operator import itemgetter
 
 def player_choices(player1_name, player2_name):
@@ -15,7 +16,8 @@ def player_choices(player1_name, player2_name):
 def game_design(game_pattern):
     '''Function to print Tic Tac Toe board with numbers initially and updated with  X & O as the game continues'''
     
-    clear_output()
+    #clear_output()
+    os.system('cls')
     print('\n')
     print(game_pattern[7] + ' | ' + game_pattern[8] + ' | ' + game_pattern[9])
     print('----------')
