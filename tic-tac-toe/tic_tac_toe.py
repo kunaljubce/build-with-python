@@ -1,7 +1,7 @@
 #from IPython.display import clear_output                                                   # Useful if code is run in Jupyter notebook
 import time
 from operator import itemgetter
-from modules.func import player_choices, game_decider, game_design, move_valid
+from modules.func import player_choices, game_decider, game_design, move_valid, sms_sender
 
 if __name__ == '__main__':
     print("Welcome to Tic Tac Toe!")
@@ -44,7 +44,7 @@ if __name__ == '__main__':
             if game_decided:
                 response = input("Congratulations {p1} for winning the game! Want a replay? (y/n): ".format(p1 = player1_name))
                 if response.lower() == 'n':
-                    print("Thanks for playing! Hope you enjoyed Tic-Tac-Toe!")
+                    sms_sender(player1_name, player2_name)
                     replay = False
                 else:
                     game_pattern = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -62,7 +62,7 @@ if __name__ == '__main__':
             if game_decided:
                 response = input("Congratulations {p2} for winning the game! Want a replay? (y/n): ".format(p2 = player2_name))
                 if response.lower() == 'n':
-                    print("Thanks for playing! Hope you enjoyed Tic-Tac-Toe!")
+                    sms_sender(player2_name, player1_name)
                     replay = False
                 else:
                     game_pattern = ['#', '1', '2', '3', '4', '5', '6', '7', '8', '9']
