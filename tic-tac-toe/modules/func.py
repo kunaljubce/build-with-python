@@ -1,5 +1,13 @@
 import os
+import sys
 from operator import itemgetter
+
+path = 'C:/Users/KunalBhattacharya/Documents/projects/build-with-python/sms_sender'
+importPath = os.path.dirname(path)
+importModule = os.path.basename(path)
+sys.path.append(importPath)
+module = __import__(importModule)
+import sms_sender.sms_sender as ss
 
 def player_choices(player1_name, player2_name):
     '''Function to assign the player choices i.e. who plays with X and who plays with O'''
@@ -44,3 +52,9 @@ def game_decider(game_pattern):
         return True
     else:
         return False
+
+def sms_sender(winner, loser):
+    sms_response = input("Thanks for playing! Hope you enjoyed Tic-Tac-Toe! Do you want to get an SMS for the win? (y/n): ")
+    if sms_response.lower() == 'y':
+        phone_no = input("Enter your phone number: ")
+        ss.main('Congratulations {p1} for defeating {p2} on Tic-Tac-Toe!'.format(p1=winner, p2=loser), phone_no)
